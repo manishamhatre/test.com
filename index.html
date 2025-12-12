@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manisha Mhatre - Portfolio</title>
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #6a0dad; color: white; padding: 20px; text-align: center; }
+        section { padding: 40px; }
+        footer { text-align: center; padding: 20px; background: #eee; }
+
+        form input, form textarea {
+            width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;
+        }
+        button {
+            background: purple; color: white; padding: 10px 20px;
+            border: none; border-radius: 5px; cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Manisha Mhatre</h1>
+        <p>Freelancer | SQL Developer | Web Designer</p>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am Manisha, a freelancer working on SQL, Web Development and automation tasks.</p>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+
+        <form id="contactForm">
+            <label>Name:</label>
+            <input type="text" name="user_name" required placeholder="Your Name">
+
+            <label>Email:</label>
+            <input type="email" name="user_email" required placeholder="Your Email">
+
+            <label>Message:</label>
+            <textarea name="message" rows="5" required placeholder="Your Message"></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        © 2025 Manisha Mhatre. All rights reserved.
+    </footer>
+
+    <!-- EmailJS Script -->
+    <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
+
+    <script>
+        // Initialize EmailJS - VERY IMPORTANT
+        emailjs.init("2en5hHHPgcXaygGz1");
+
+        // Contact Form Submit
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+            e.preventDefault(); 
+
+            emailjs.sendForm(
+                "service_b0lr72e",
+                "__ejs-test-mail-service__",
+                this
+            )
+            .then(function() {
+                alert("Message sent successfully!");
+            }, function(error) {
+                alert("FAILED... " + JSON.stringify(error));
+            });
+        });
+    </script>
+
+</body>
+</html>
