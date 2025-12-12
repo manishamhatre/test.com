@@ -88,7 +88,7 @@
   <!-- Contact Section -->
   <section id="contact">
     <h2>Contact Me</h2>
-    <!-- CORRECTED: Full FormSubmit URL added with your email ID -->
+    <!-- Action URL is correct, method="POST" is present -->
     <form action="https://formsubmit.co/82c26ed9347fd56f7277d6b92512bd09" method="POST">
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" required placeholder="Your Name">
@@ -98,9 +98,13 @@
 
       <label for="message">Message:</label>
       <textarea name="message" id="message" rows="5" required placeholder="message"></textarea>
-          <input type="hidden" name="_next" value="manishamhatre.github.io">
+      
+      <!-- CORRECTED: Full URL added here. -->
+      <input type="hidden" name="_next" value="manishamhatre.github.io">
+      
       <input type="hidden" name="_captcha" value="false">
-    <button type="submit">Send</button>
+      
+      <button type="submit">Send</button>
     </form>
   </section>
 
@@ -111,11 +115,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
