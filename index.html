@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Manisha Mhatre | Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f4f4;
+}
+.container{
+  max-width:500px;
+  margin:80px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+h2{
+  text-align:center;
+  color:#6a0dad;
+}
+input, textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+button{
+  width:100%;
+  padding:12px;
+  background:#6a0dad;
+  color:white;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
+}
+button:hover{
+  background:#4b0082;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Contact Me</h2>
+
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</div>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs@4/dist/email.min.js"></script>
+
+<script>
+  // 🔑 INIT WITH PUBLIC KEY
+  emailjs.init("YOUR_PUBLIC_KEY");
+
+  document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "YOUR_SERVICE_ID",
+      "YOUR_TEMPLATE_ID",
+      this
+    ).then(function(){
+        alert("Message sent successfully to Manisha.mhatre2015@gmail.com");
+        document.getElementById("contactForm").reset();
+    }, function(error){
+        alert("Error: " + error.text);
+        console.log(error);
+    });
+  });
+</script>
+
+</body>
+</html>
