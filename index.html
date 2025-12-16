@@ -3,29 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Manisha Mhatre | Contact</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- EmailJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+    emailjs.init("YOUR_PUBLIC_KEY"); 
+})();
+</script>
 
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: white;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
 }
 .container {
-  max-width: 400px;
-  margin: 50px auto;
+    max-width: 400px;
+    margin: 60px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
 }
 input, textarea, button {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 5px;
-  border: none;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
 }
 button {
-  background: #38bdf8;
-  font-size: 16px;
-  cursor: pointer;
+    background: #007bff;
+    color: white;
+    border: none;
 }
 </style>
 </head>
@@ -33,37 +41,29 @@ button {
 <body>
 
 <div class="container">
-  <h2>Contact Manisha</h2>
+<h2>Contact Manisha</h2>
 
-  <form id="contactForm">
-    <input type="text" name="from_name" placeholder="Your Name" required>
-    <input type="email" name="from_email" placeholder="Your Email" required>
+<form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
     <textarea name="message" placeholder="Your Message" required></textarea>
     <button type="submit">Send Message</button>
-  </form>
+</form>
 </div>
 
-<!-- ✅ EmailJS Library (MUST be before script) -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs@4/dist/email.min.js"></script>
-
 <script>
-(function(){
-  emailjs.init("2en5hHHPgcXaygGz1"); // 👈 Public Key
-})();
-
 document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  emailjs.sendForm(
-    "service_b0lr72e",          // 👈 Service ID
-    "ejs-test-mail-service",         // 👈 Template ID (REAL one)
-    this
-  ).then(function() {
-      alert("✅ Message sent to Manisha.mhatre2015@gmail.com");
-      document.getElementById("contactForm").reset();
-  }, function(error) {
-      alert("❌ Error: " + error.text);
-  });
+    emailjs.sendForm(
+        "service_b0lr72e",        // ✅ your SERVICE ID
+        "ejs-test-mail-service", // ✅ your REAL TEMPLATE ID
+        this
+    ).then(function() {
+        alert("Message sent successfully!");
+    }, function(error) {
+        alert("FAILED: " + error.text);
+    });
 });
 </script>
 
