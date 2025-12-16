@@ -57,7 +57,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 
     emailjs.sendForm(
         "service_b0lr72e",        // ✅ your SERVICE ID
-        "__ejs-test-mail-service__", // ✅ your REAL TEMPLATE ID
+        "ejs-test-mail-service", // ✅ your REAL TEMPLATE ID
         this
     ).then(function() {
         alert("Message sent successfully!");
@@ -69,6 +69,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
