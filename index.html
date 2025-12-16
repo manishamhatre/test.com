@@ -7,18 +7,21 @@
 
 <style>
 body{
-  font-family:Arial, sans-serif;
+  font-family: Arial, sans-serif;
   background:#f4f4f4;
 }
 .box{
   max-width:500px;
-  margin:100px auto;
+  margin:80px auto;
   background:#fff;
   padding:30px;
   border-radius:10px;
   box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
-h2{text-align:center;color:#6a0dad}
+h2{
+  text-align:center;
+  color:#6a0dad;
+}
 input,textarea{
   width:100%;
   padding:12px;
@@ -30,11 +33,13 @@ button{
   width:100%;
   padding:12px;
   background:#6a0dad;
-  color:white;
+  color:#fff;
   border:none;
   border-radius:6px;
   font-size:16px;
+  cursor:pointer;
 }
+button:hover{background:#4b0082}
 </style>
 </head>
 
@@ -42,40 +47,40 @@ button{
 
 <div class="box">
   <h2>Contact Me</h2>
+
   <form id="contactForm">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
     <textarea name="message" placeholder="Your Message" required></textarea>
-    <button type="submit">Send</button>
+    <button type="submit">Send Message</button>
   </form>
 </div>
 
-<!-- ✅ EMAILJS SCRIPT – MUST BE HERE -->
+<!-- ✅ EMAILJS SCRIPT (MUST BE BEFORE JS CODE) -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs@4/dist/email.min.js"></script>
 
 <script>
-window.onload = function () {
+window.onload = function(){
 
-  // 🔑 INIT
+  // ✅ INIT (YOUR PUBLIC KEY)
   emailjs.init("2en5hHHPgcXaygGz1");
 
   document.getElementById("contactForm").addEventListener("submit", function(e){
     e.preventDefault();
 
     emailjs.sendForm(
-      "service_b0lr72e",      // ✅ service id
-      "__ejs-test-mail-service__",     // 🔴 REPLACE this
+      "service_b0lr72e",      // ✅ Service ID
+      "__ejs-test-mail-service__",     // 🔴 PUT YOUR REAL TEMPLATE ID HERE
       this
-    ).then(
-      function(){
-        alert("Mail sent successfully!");
-      },
-      function(error){
-        alert("FAILED: " + error.text);
+    ).then(function(){
+        alert("Mail sent successfully to Manisha.mhatre2015@gmail.com");
+        document.getElementById("contactForm").reset();
+    }, function(error){
+        alert("ERROR: " + error.text);
         console.log(error);
-      }
-    );
+    });
   });
+
 };
 </script>
 
