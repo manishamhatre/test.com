@@ -106,13 +106,16 @@
 
 <script>
 const form = document.getElementById("contactForm");
-
+const statusDiv = document.getElementById("status");
+const btn = document.getElementById("btn");
+ 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
 
   const submitButton = form.querySelector("button");
   submitButton.disabled = true;
   submitButton.textContent = "Sending...";
+ statusDiv.style.display = "none";
 
   emailjs.sendForm(
     "service_b0lr72e",   // ← Replace with your Service ID from EmailJS
@@ -120,14 +123,18 @@ form.addEventListener("submit", function(e) {
     form
   ).then(
     function(response) {
-      alert("✅ Message sent successfully!");
+     statusDiv.style.display = "block";
+      statusDiv.className = "success";
+      statusDiv.textContent = "✅ Message sent successfully!";
       form.reset();
       submitButton.disabled = false;
       submitButton.textContent = "Send Message";
-      console.log("SUCCESS", response);
+      
     },
     function(error) {
-      alert("❌ Failed to send: " + error.text);
+      statusDiv.style.display = "block";
+      statusDiv.className = "error";
+      statusDiv.textContent = "❌ Failed to send message. Try again.";
       submitButton.disabled = false;
       submitButton.textContent = "Send Message";
       console.error("FAILED", error);
@@ -138,6 +145,7 @@ form.addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
